@@ -1,27 +1,7 @@
-# ember-refined-slideranger
+# Ember Refined SlideRanger [![travis-ci][travis-ci]][travis-link] [![fastboot][fastboot]][self]
 
-This README outlines the details of collaborating on this Ember addon.
+[self]: https://github.com/very-geek/ember-refined-slideranger	"Ember Refined SlideRanger"
+[travis-link]: https://travis-ci.org/very-geek/ember-refined-slideranger
+[travis-ci]: https://img.shields.io/travis/very-geek/ember-refined-slideranger/master.svg?style=flat-square
+[fastboot]: https://img.shields.io/badge/%20fastboot--compatible%20-yes-brightgreen.svg?style=flat-square
 
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd ember-refined-slideranger`
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-## Running Tests
-
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
