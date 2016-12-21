@@ -20,6 +20,6 @@ module.exports = {
   },
 
   isDevelopingAddon() {
-    return !this.app.isProduction
+    return process.env.EMBER_ENV !== 'production'
   },
 }
