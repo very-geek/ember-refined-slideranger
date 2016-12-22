@@ -3,6 +3,7 @@ import layout from '../templates/components/ui-range'
 import set from 'ember-metal/set'
 import get from 'ember-metal/get'
 import observer from 'ember-metal/observer'
+import { bind } from 'ember-runloop'
 import SlideRanger from 'slideranger'
 
 export default Component.extend({
@@ -46,12 +47,21 @@ export default Component.extend({
     this.ranger && this.ranger.set(+get(this, 'value'))
   }),
 
+  _toggleControlClassName() {
+    this.$().toggleClass('-range')
+  },
+
   didInsertElement() {
     this.ranger = SlideRanger.create(this.element, get(this, '_options'))
 
     for (let handler of this._handlers) {
       this.ranger.on(handler, get(this, `on-${handler}`))
     }
+
+    this.toggleControlClassName = bind(this, this._toggleControlClassName)
+
+    this.ranger.on('start', this.toggleControlClassName)
+    this.ranger.on('end', this.toggleControlClassName)
   },
 
   willDestroy() {
@@ -59,6 +69,9 @@ export default Component.extend({
       for (let handler of this._handlers) {
         this.ranger.off(handler)
       }
+
+      this.ranger.off('start', this.toggleControlClassName)
+      this.ranger.off('end', this.toggleControlClassName)
 
       this.ranger.destroy()
     }
