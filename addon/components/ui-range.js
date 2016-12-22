@@ -2,6 +2,7 @@ import Component from 'ember-component'
 import layout from '../templates/components/ui-range'
 import set from 'ember-metal/set'
 import get from 'ember-metal/get'
+import observer from 'ember-metal/observer'
 import SlideRanger from 'slideranger'
 
 export default Component.extend({
@@ -41,17 +42,21 @@ export default Component.extend({
       .map(name => name.slice(3))
   },
 
+  updateValue: observer('value', function() {
+    this.ranger && this.ranger.set(+get(this, 'value'))
+  }),
+
   didInsertElement() {
     this.ranger = SlideRanger.create(this.element, get(this, '_options'))
 
-    for(let handler of this._handlers) {
+    for (let handler of this._handlers) {
       this.ranger.on(handler, get(this, `on-${handler}`))
     }
   },
 
   willDestroy() {
     if (this.ranger) {
-      for(let handler of this._handlers) {
+      for (let handler of this._handlers) {
         this.ranger.off(handler)
       }
 

@@ -1,6 +1,6 @@
 {
   "name": "ember-refined-slideranger",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An Ember addon to wrap nouislider library to provide UI components for range input.",
   "keywords": [
     "ember-addon"
